@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Huy Thiên</title>
+
+    <link rel="icon" href="images/khóa sol.png" type="image/png">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <h1 class="logo">Wy Tiên</h1>
+            <nav class="nav">
+                <a href="#home" class="nav-link active">Trang chủ</a>
+                <a href="#videos" class="nav-link">Video</a>
+                <a href="#about" class="nav-link">Giới thiệu</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+    <div class="hero-content">
+        <div class="hero-text">
+            <h2 class="hero-title">Chào mừng đến với<br> Không gian Âm Nhạc<br>Của Huy Thiên</h2>
+            <p class="hero-subtitle"><i>Nơi kể chuyện bằng những giai điệu của Piano</i></p>
+            <a href="#videos" class="cta-button">
+                <i class="fas fa-play"></i> Xem video
+            </a>
+        </div>
+
+        <div class="piano-animation">
+            <div class="piano-keys">
+                <div class="key white"></div> <div class="key black"></div> <div class="key white"></div> <div class="key black"></div> <div class="key white"></div> <div class="key white"></div> <div class="key black"></div> <div class="key white"></div> <div class="key black"></div> <div class="key white"></div> <div class="key black"></div> <div class="key white"></div>
+        </div>
+    </div>
+</section>
+
+ <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-image">
+                    <div class="about-image">
+                         <img src="images/Profile.jpg" alt="Huy Thiên Piano" class="profile-pic">
+                    </div>
+                </div>
+                <div class="about-text">
+                    <h2 class="section-title">Giới Thiệu</h2>
+                   <p>Chào bạn, mình là Huy Thiên. Ban ngày, mình là một sinh viên của Trường Đại học Sư phạm TP.HCM với những giây phút bận rộn trong lớp học. Nhưng khi mọi ồn ào trong ngày khép lại, nơi duy nhất mình cảm thấy trọn vẹn nhất là bên cạnh những phím đàn.</p>
+<p>Lần đầu ngón tay chạm vào phím đàn Piano là năm lên sáu tuổi, khi chân còn chưa với tới bàn đạp của đàn. Đi qua ngần ấy năm, cây đàn không chỉ là sở thích, mà là nơi cất giữ những vui buồn không biết tỏ cùng ai. Mình chơi đàn không phải để biểu diễn, mà để chia sẻ những tâm tư, tình cảm bên trong mình. Hy vọng những giai điệu ở đây có thể chạm vào một góc bình yên nào đó bên trong bạn.</p>
+                    
+                    <div class="skills">
+                        <h3>🎼 Phong cách Piano</h3>
+                        <p style="text-align: center; font-size: 0.9rem; color: #888; margin-bottom: 20px;">(Bấm vào từng mục để xem danh sách bài hát)</p>
+                        
+                        <div class="skill-grid">
+                            <div class="skill-card" onclick="openModal('classical')">
+                                <i class="fas fa-music"></i>
+                                <span>Classical</span>
+                            </div>
+                            
+                            <div class="skill-card" onclick="openModal('ballad')">
+                                <i class="fas fa-heart"></i>
+                                <span>Ballad</span>
+                            </div>
+                            
+                            <div class="skill-card" onclick="openModal('pop')">
+                                <i class="fas fa-bolt"></i>
+                                <span>Pop</span>
+                            </div>
+                            
+                            <div class="skill-card" onclick="openModal('jazz')">
+                                <i class="fas fa-cloud"></i>
+                                <span>Jazz</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="songModal" class="modal">
+                        <div class="modal-content">
+                            <span class="close-btn" onclick="closeModal()">&times;</span>
+                            <h2 id="modalTitle">Danh sách bài hát</h2>
+                            <ul id="songList">
+                                </ul>
+                        </div>
+                    </div>
+
+                   <div class="social-links">
+                        <a href="https://www.facebook.com/share/1EKw3BRnVE/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="social-link">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="https://instagram.com/huythienpia_0710" target="_blank" rel="noopener noreferrer" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    
+    <section id="virtual-piano" class="piano-section">
+    <div class="container">
+        <h2 class="section-title">🎹 Thử tài Piano</h2>
+        <p class="section-subtitle">Chạm vào màn hình để chơi</p>
+        
+        <div class="piano-wrapper">
+            <ul class="piano-keys-list">
+                <li class="key white" data-note="C4" data-key="a"><span>A</span></li>
+                <li class="key black" data-note="Cs4" data-key="w"><span>W</span></li>
+                <li class="key white" data-note="D4" data-key="s"><span>S</span></li>
+                <li class="key black" data-note="Ds4" data-key="e"><span>E</span></li>
+                <li class="key white" data-note="E4" data-key="d"><span>D</span></li>
+                <li class="key white" data-note="F4" data-key="f"><span>F</span></li>
+                <li class="key black" data-note="Fs4" data-key="t"><span>T</span></li>
+                <li class="key white" data-note="G4" data-key="g"><span>G</span></li>
+                <li class="key black" data-note="Gs4" data-key="y"><span>Y</span></li>
+                <li class="key white" data-note="A4" data-key="h"><span>H</span></li>
+                <li class="key black" data-note="As4" data-key="u"><span>U</span></li>
+                <li class="key white" data-note="B4" data-key="j"><span>J</span></li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+
+
+    <!-- Video Gallery -->
+<section id="videos" class="videos">
+    <div class="container">
+        <h2 class="section-title">Các tác phẩm nổi bật</h2>
+        <br>
+        <div class="video-grid">
+            <div class="video-card">
+                <div class="video-thumbnail">
+                    <video controls poster="images/khóa sol.png">
+                        <source src="videos/Canon in D.mp4" type="video/mp4">
+                        Trình duyệt của bạn không hỗ trợ video.
+                    </video>
+                    <div class="play-overlay">
+                        <i class="fas fa-play-circle"></i>
+                    </div>
+                </div>
+                <div class="video-info">
+                    <h3>Canon in D</h3>
+                    <p class="video-date"><i class="far fa-calendar"></i> 14/10/2025</p>
+                    <div class="video-stats">
+                        <span><i class="far fa-clock"></i> 2:12</span>
+                        <span><i class="far fa-heart"></i> 234</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="video-card">
+                <div class="video-thumbnail">
+                    <video controls poster="images/khóa sol.png">
+                        <source src="videos/Perfect.mp4" type="video/mp4">
+                        Trình duyệt của bạn không hỗ trợ video.
+                    </video>
+                    <div class="play-overlay">
+                        <i class="fas fa-play-circle"></i>
+                    </div>
+                </div>
+                <div class="video-info">
+                    <h3>Perfect</h3>
+                    <p class="video-date"><i class="far fa-calendar"></i> 16/08/2024</p>
+                    <div class="video-stats">
+                        <span><i class="far fa-clock"></i> 1:45</span>
+                        <span><i class="far fa-heart"></i> 562</span>
+                    </div>
+                </div>
+            </div>
+            
+            </div>
+    </div>
+</section>
+
+
+   
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 Huy Thiên. Made with Heart and Music <i class="fas fa-heart"></i></p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

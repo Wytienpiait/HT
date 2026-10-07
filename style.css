@@ -1,0 +1,530 @@
+/* =========================================
+   1. CÀI ĐẶT CHUNG & BIẾN MÀU (SETUP)
+   ========================================= */
+:root {
+    /* Bảng màu Tím hiện đại (Dreamy Violet) */
+    --primary-color: #6366f1;    /* Tím Indigo chủ đạo */
+    --secondary-color: #818cf8;  /* Tím nhạt hơn */
+    --accent-color: #ec4899;     /* Hồng (Điểm nhấn cho nút/icon) */
+    
+    /* Màu nền và chữ */
+    --text-dark: #1f2937;        /* Chữ đen xám (dễ đọc) */
+    --text-gray: #6b7280;        /* Chữ ghi chú */
+    --bg-light: #f3f4f6;         /* Nền website xám rất nhạt */
+    --white: #ffffff;
+    
+    /* Hiệu ứng */
+    --gradient: linear-gradient(135deg, #4f46e5 0%, #9333ea 100%); /* Gradient Tím đậm */
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    line-height: 1.6;
+    overflow-x: hidden; /* Chặn thanh cuộn ngang thừa */
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* =========================================
+   2. HEADER (THANH ĐIỀU HƯỚNG)
+   ========================================= */
+.header {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(10px);
+}
+
+.header-content {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--primary-color);
+    letter-spacing: -0.5px;
+}
+
+.nav {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover, .nav-link.active {
+    background-color: var(--primary-color);
+    color: var(--white);
+    box-shadow: 0 4px 10px rgba(99, 102, 241, 0.3);
+}
+
+/* =========================================
+   3. HERO SECTION (PHẦN MỞ ĐẦU)
+   ========================================= */
+.hero {
+    padding: 80px 0 100px 0;
+    background: var(--gradient);
+    color: var(--white);
+    text-align: center;
+    border-radius: 0 0 50px 50px; /* Bo tròn góc dưới rất nghệ thuật */
+    margin-bottom: 50px;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 40px;
+}
+
+.hero-text {
+    max-width: 700px;
+    margin: 0 auto;
+    animation: fadeInUp 0.8s ease;
+}
+
+.hero-title {
+    
+    font-weight: 800;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.hero-subtitle {
+    font-size: 1.01rem;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 14px 40px;
+    background: var(--white);
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 50px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    transition: transform 0.3s;
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+}
+
+/* Animation Piano Trang trí */
+.piano-animation .piano-keys {
+    display: flex;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 10px;
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+}
+.piano-animation .key {
+    width: 24px; height: 90px;
+    background: #fff; margin: 0 2px;
+    border-radius: 0 0 4px 4px;
+    animation: keyFloat 3s infinite ease-in-out;
+}
+.piano-animation .key.black {
+    background: #1f2937; height: 55px;
+    margin-top: -10px; z-index: 2; width: 16px;
+    margin-left: -10px; margin-right: -10px;
+    position: relative;
+}
+/* Hiệu ứng phím nhấp nhô */
+@keyframes keyFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(5px); }
+}
+.piano-animation .key:nth-child(odd) { animation-delay: 0.2s; }
+
+/* =========================================
+   4. VIRTUAL PIANO (ĐÀN ẢO TƯƠNG TÁC)
+   ========================================= */
+.piano-section {
+    padding: 60px 0;
+    background: var(--white);
+    text-align: center;
+    margin-top: 64px;
+    position: relative;
+    z-index: 10;
+    border-radius: 20px;
+    border: 1px solid rgba(99, 102, 241, 0.16);
+    border-top: 4px solid var(--secondary-color);
+    width: 95%;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: var(--shadow-lg);
+}
+
+.piano-wrapper {
+    display: inline-flex;
+    justify-content: center;
+    margin-top: 30px;
+    background: #2d3436; /* Hộp đàn màu xám đen sang trọng */
+    padding: 25px 20px;
+    border-radius: 12px;
+    box-shadow: 0 15px 35px rgba(99, 102, 241, 0.3); /* Bóng đổ màu tím */
+    position: relative;
+}
+
+/* Tên thương hiệu trên đàn */
+.piano-wrapper::before {
+    content: "HUY THIEN PIANO";
+    position: absolute;
+    top: 5px;
+    color: #ffd700; /* Chữ vàng kim loại */
+    font-size: 10px;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+.piano-keys-list { display: flex; list-style: none; position: relative; }
+
+/* Phím Trắng */
+.key { cursor: pointer; position: relative; transition: 0.1s; user-select: none; }
+.key.white {
+    width: 50px; height: 180px;
+    background: linear-gradient(to bottom, #fff 0%, #f3f4f6 100%);
+    border: 1px solid #d1d5db; border-radius: 0 0 5px 5px;
+    margin: 0 2px; z-index: 1;
+}
+.key.white:active, .key.white.active {
+    transform: translateY(2px);
+    background: #eff6ff;
+    border-bottom: 5px solid var(--primary-color); /* Bấm hiện màu Tím */
+}
+
+/* Phím Đen */
+.key.black {
+    width: 30px; height: 110px;
+    background: linear-gradient(to bottom, #374151 0%, #111827 100%);
+    position: absolute; top: 0; z-index: 2;
+    border-radius: 0 0 4px 4px;
+    margin-left: -15px; border: 1px solid #4b5563;
+}
+.key.black:active, .key.black.active {
+    transform: translateY(2px);
+    box-shadow: 0 0 15px var(--accent-color); /* Bấm hiện màu Hồng */
+}
+/* Vị trí phím đen */
+.key.black:nth-child(2) { left: 54px; }
+.key.black:nth-child(4) { left: 108px; }
+.key.black:nth-child(7) { left: 216px; }
+.key.black:nth-child(9) { left: 270px; }
+.key.black:nth-child(11) { left: 324px; }
+
+/* --- ẨN CHỮ TRÊN PHÍM ĐÀN --- */
+.key span {
+    display: none; /* Lệnh này sẽ ẩn toàn bộ chữ cái đi */
+}
+.key.black span { bottom: 8px; color: #e5e7eb; font-size: 0.7rem; }
+
+/* =========================================
+   5. VIDEO GALLERY
+   ========================================= */
+.videos { padding: 80px 0; }
+.section-title { font-size: 2rem; text-align: center; color: var(--primary-color); margin-bottom: 10px; }
+.section-subtitle { text-align: center; color: var(--text-gray); margin-bottom: 50px; }
+
+.video-grid {
+    display: flex;
+    justify-content: center; /* Canh giữa 2 video */
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.video-card {
+    width: 450px; max-width: 100%;
+    background: var(--white);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.video-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-lg);
+}
+
+.video-thumbnail {
+    position: relative; padding-bottom: 56.25%; height: 0; background: #000;
+}
+.video-thumbnail video {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    object-fit: cover;
+}
+
+/* Nút Play ảo trên thumbnail */
+.play-overlay {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 4rem; color: rgba(255,255,255,0.8);
+    pointer-events: none; opacity: 0; transition: 0.3s;
+}
+.video-thumbnail:hover .play-overlay { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+
+.video-info { padding: 25px; }
+.video-info h3 { font-size: 1.25rem; margin-bottom: 10px; color: var(--text-dark); }
+.video-stats { display: flex; gap: 20px; color: var(--text-gray); font-size: 0.9rem; }
+.video-stats i { color: var(--accent-color); }
+.video-date { display: none; } /* Ẩn ngày tháng */
+
+/* =========================================
+   6. ABOUT & SKILLS
+   ========================================= */
+.about { padding: 80px 0; background: var(--white); }
+.about-content {
+    display: flex; flex-direction: column; align-items: center; gap: 40px;
+}
+/* Ảnh đại diện */
+.about-image img.profile-pic {
+    width: 250px; height: 250px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid var(--white);
+    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4); /* Bóng tím */
+}
+
+.about-text { text-align: center; max-width: 800px; }
+.about-text p { margin-bottom: 15px; color: #4b5563; font-size: 1.05rem; }
+
+/* Grid kỹ năng */
+.skill-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 20px; margin-top: 30px;
+}
+.skill-card {
+    background: #f8fafc;
+    padding: 20px 10px; border-radius: 12px;
+    text-align: center; cursor: pointer;
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s;
+}
+.skill-card i { font-size: 28px; color: var(--primary-color); display: block; margin-bottom: 10px; }
+.skill-card span { font-weight: 600; color: var(--text-dark); }
+
+.skill-card:hover {
+    background: var(--primary-color);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
+}
+.skill-card:hover i, .skill-card:hover span { color: var(--white); }
+
+/* Social Links */
+.social-links { display: flex; gap: 15px; justify-content: center; margin-top: 30px; }
+.social-link {
+    width: 45px; height: 45px;
+    border-radius: 50%;
+    background: #e0e7ff; color: var(--primary-color);
+    display: flex; align-items: center; justify-content: center;
+    text-decoration: none; font-size: 1.2rem; transition: 0.3s;
+}
+.social-link:hover {
+    background: var(--primary-color); color: var(--white);
+    transform: translateY(-3px);
+}
+
+/* =========================================
+   7. MODAL (POPUP DANH SÁCH NHẠC)
+   ========================================= */
+.modal {
+    display: none; position: fixed; z-index: 2000;
+    left: 0; top: 0; width: 100%; height: 100%;
+    background-color: rgba(31, 41, 55, 0.8); backdrop-filter: blur(5px);
+    align-items: center; justify-content: center;
+}
+.modal-content {
+    background: var(--white);
+    width: 90%; max-width: 500px;
+    padding: 30px; border-radius: 20px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    position: relative; animation: zoomIn 0.3s ease;
+}
+@keyframes zoomIn { from {transform: scale(0.9); opacity: 0;} to {transform: scale(1); opacity: 1;} }
+
+.close-btn { position: absolute; top: 15px; right: 20px; font-size: 30px; cursor: pointer; color: #9ca3af; }
+.close-btn:hover { color: var(--primary-color); }
+
+#modalTitle {
+    color: var(--primary-color); font-size: 1.5rem; text-align: center;
+    border-bottom: 2px solid #f3f4f6; padding-bottom: 15px; margin-bottom: 15px;
+}
+#songList { list-style: none; }
+#songList li {
+    padding: 12px 10px; border-bottom: 1px solid #f3f4f6; color: var(--text-dark);
+    display: flex; align-items: center;
+}
+#songList li:before {
+    content: "♫"; color: var(--accent-color); margin-right: 15px; font-size: 1.2rem;
+}
+
+/* =========================================
+   8. FOOTER & ANIMATION
+   ========================================= */
+.footer {
+    background: var(--text-dark); color: #9ca3af;
+    text-align: center; padding: 40px 0; margin-top: 50px;
+}
+.footer i { color: #ef4444; animation: heartbeat 1.5s infinite; }
+
+@keyframes heartbeat {
+    0% { transform: scale(1); } 50% { transform: scale(1.2); } 100% { transform: scale(1); }
+}
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+/* =========================================
+   9. RESPONSIVE (MOBILE)
+   ========================================= */
+@media (min-width: 768px) {
+    .about-content { flex-direction: row; text-align: left; }
+    .about-text { text-align: left; }
+    .social-links { justify-content: flex-start; }
+    .header-content { flex-direction: row; }
+    .hero-title { font-size: 3.5rem; }
+}
+
+@media (max-width: 768px) {
+    .header-content { flex-direction: column; gap: 15px; }
+    .hero { border-radius: 0 0 30px 30px; padding: 60px 0; }
+    .hero-title { font-size: 2rem; }
+    
+    /* Thu nhỏ Đàn ảo cho điện thoại */
+    .key.white { width: 34px; height: 130px; }
+    .key.black { width: 22px; height: 80px; margin-left: -11px; }
+    .key.black:nth-child(2) { left: 36px; }
+    .key.black:nth-child(4) { left: 72px; }
+    .key.black:nth-child(7) { left: 144px; }
+    .key.black:nth-child(9) { left: 180px; }
+    .key.black:nth-child(11) { left: 216px; }
+}
+
+/* --- TỐI ƯU PIANO TRANG TRÍ CHO ĐIỆN THOẠI --- */
+@media (max-width: 768px) {
+    .piano-animation {
+        /* Thu nhỏ còn 80% kích thước thật để nhìn thanh thoát hơn */
+        transform: scale(0.8); 
+        margin-bottom: 10px; /* Giảm khoảng cách thừa */
+    }
+    
+
+}
+
+/* --- PIANO TRANG TRÍ (ANIMATION ONLY - NO SOUND) --- */
+
+.piano-animation {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px; /* Cách phần chữ bên trên một chút */
+}
+
+.piano-animation .piano-keys {
+    display: flex;
+    position: relative; /* Để căn phím đen theo khung này */
+    background: rgba(255, 255, 255, 0.15); /* Nền mờ sang trọng */
+    padding: 10px;
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* 1. CẤU HÌNH PHÍM TRẮNG */
+.piano-animation .key.white {
+    width: 26px; 
+    height: 90px;
+    background: #fff;
+    margin: 0 2px;
+    border-radius: 0 0 4px 4px;
+    /* Hiệu ứng nhún nhảy vô tận */
+    animation: keyWave 2.5s infinite ease-in-out;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* 2. CẤU HÌNH PHÍM ĐEN (Dùng Position Absolute để đè lên chuẩn xác) */
+.piano-animation .key.black {
+    width: 16px;
+    height: 55px;
+    background: #1f2937; /* Màu đen xám */
+    position: absolute;   /* Đè lên phím trắng */
+    top: 10px;            /* Cách mép trên bằng padding */
+    z-index: 10;
+    border-radius: 0 0 3px 3px;
+    border: 1px solid #000;
+    /* Hiệu ứng nhún nhảy */
+    animation: keyWave 2.5s infinite ease-in-out;
+}
+
+/* 3. CĂN CHỈNH VỊ TRÍ PHÍM ĐEN (Không bao giờ bị lệch) */
+.piano-animation .key.black:nth-child(2)  { left: 34px; animation-delay: 0.1s; } /* C# */
+.piano-animation .key.black:nth-child(4)  { left: 64px; animation-delay: 0.2s; } /* D# */
+
+/* Chỗ này nhảy cóc qua khe E-F (Mi-Fa) */
+.piano-animation .key.black:nth-child(7)  { left: 124px; animation-delay: 0.4s; } /* F# */
+.piano-animation .key.black:nth-child(9)  { left: 154px; animation-delay: 0.5s; } /* G# */
+.piano-animation .key.black:nth-child(11) { left: 184px; animation-delay: 0.6s; } /* A# */
+
+/* Chỉnh delay cho phím trắng để tạo hiệu ứng lượn sóng */
+.piano-animation .key.white:nth-child(1)  { animation-delay: 0.0s; }
+.piano-animation .key.white:nth-child(3)  { animation-delay: 0.1s; }
+.piano-animation .key.white:nth-child(5)  { animation-delay: 0.2s; }
+.piano-animation .key.white:nth-child(6)  { animation-delay: 0.3s; }
+.piano-animation .key.white:nth-child(8)  { animation-delay: 0.4s; }
+.piano-animation .key.white:nth-child(10) { animation-delay: 0.5s; }
+.piano-animation .key.white:nth-child(12) { animation-delay: 0.6s; }
+.piano-animation .key.white:nth-child(13) { animation-delay: 0.7s; }
+
+/* 4. ĐỊNH NGHĨA CHUYỂN ĐỘNG (KEYFRAMES) */
+@keyframes keyWave {
+    0%, 100% { 
+        transform: translateY(0); 
+    }
+    50% { 
+        transform: translateY(8px); /* Nhún xuống 8px */
+        background-color: var(--secondary-color); /* Đổi màu nhẹ sang tím khi nhún (nếu có biến màu) */
+    } 
+}
+
+/* 5. MOBILE (Thu nhỏ lại cho vừa điện thoại) */
+@media (max-width: 768px) {
+    .piano-animation {
+        transform: scale(0.85); /* Thu nhỏ 85% */
+        margin-top: 20px;
+    }
+}
